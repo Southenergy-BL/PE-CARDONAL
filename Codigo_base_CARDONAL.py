@@ -16,7 +16,7 @@ COLORES_CENTRALES = {
 }
 
 POTENCIA_INSTALADA = {
-    'PE CARDONAL': 3,
+    'PE CARDONAL': 31.5,
 }
 
 CONFIG_PLOTLY = {'separators': ',.', 'displayModeBar': False}
