@@ -9,14 +9,14 @@ import os
 # ==========================================
 # 1. CONFIGURACIÓN Y CONSTANTES
 # ==========================================
-st.set_page_config(page_title="Monitoreo de Activos Fotovoltaicos", layout="wide")
+st.set_page_config(page_title="Monitoreo de Activos Eólicos", layout="wide")
 
 COLORES_CENTRALES = {
-    'PMGD PFV GUARANA': '#8ECAE6'
+    'PE CARDONAL': '#8ECAE6'
 }
 
 POTENCIA_INSTALADA = {
-    'PMGD PFV GUARANA': 3,
+    'PE CARDONAL': 3,
 }
 
 CONFIG_PLOTLY = {'separators': ',.', 'displayModeBar': False}
@@ -42,7 +42,7 @@ def cargar_y_procesar_datos(ruta_archivo):
         'Generación Real (MWh)': 'Generacion_MW'
     })
     
-    centrales_objetivo = ['PMGD PFV GUARANA']
+    centrales_objetivo = ['PE CARDONAL']
     df = df[df['Central'].isin(centrales_objetivo)].copy()
     
     df['Fecha_Hora'] = pd.to_datetime(df['Fecha_Hora'])
@@ -88,7 +88,7 @@ def calcular_rampas(df_agrupado):
 st.title("🌬️ Monitoreo de Activos: Central Guarana")
 
 # Rutas relativas apuntando a la carpeta "datos" en el repositorio de GitHub
-RUTA_GEN = os.path.join("datos", "Generación 2025-May 2026.xlsx")
+RUTA_GEN = os.path.join("datos", "Generación 2025-Jun 2026.xlsx")
 RUTA_CMG = os.path.join("datos", "CMg_Multibarra_Con_Promedios.xlsx")
 
 try:
@@ -258,7 +258,7 @@ try:
     # PESTAÑA 4: MAPA DE CALOR
     # ---------------------------------------------------------
     with tab_heat:
-        st.markdown("#### Perfil Horario de Generación Guarana")
+        st.markdown("#### Perfil Horario de Generación Cardonal")
         df_heat = df_completo.groupby(['Fecha', 'Hora'])['Generacion_MW'].sum().reset_index()
         
         fig_heat = px.density_heatmap(
@@ -274,7 +274,7 @@ try:
     st.sidebar.divider()
     st.sidebar.markdown("### 📥 Descargas")
 
-    reporte_txt = f"""REPORTE EJECUTIVO DE ACTIVOS - CENTRAL GUARANA
+    reporte_txt = f"""REPORTE EJECUTIVO DE ACTIVOS - CENTRAL CARDONAL
 ================================================
 Días Evaluados: {dias_periodo}
 
@@ -306,10 +306,10 @@ Hogares Equivalentes Abastecidos: {formato_cl(hogares_equivalentes)}
   - Horas Equivalentes a Plena Carga (HEPC): {formato_cl(row['HEPC'])} horas
   - Máxima Inyección Horaria: {formato_cl(row['Max_Generacion'])} MW\n"""
 
-    st.sidebar.download_button("📄 Descargar Reporte Técnico (TXT)", data=reporte_txt, file_name="Reporte_Activos_Guarana.txt", mime="text/plain")
+    st.sidebar.download_button("📄 Descargar Reporte Técnico (TXT)", data=reporte_txt, file_name="Reporte_Activos_Cardonal.txt", mime="text/plain")
     
     csv_data = df_completo.to_csv(index=False, sep=';', decimal=',')
-    st.sidebar.download_button("📊 Descargar Base de Datos Cruzada (CSV)", data=csv_data, file_name="Data_Guarana_Consolidada.csv", mime="text/csv")
+    st.sidebar.download_button("📊 Descargar Base de Datos Cruzada (CSV)", data=csv_data, file_name="Data_Cardonal_Consolidada.csv", mime="text/csv")
 
 except Exception as e:
     st.error(f"Error crítico al iniciar la plataforma. Asegúrate de haber subido los archivos a la carpeta 'datos' en GitHub. Detalle del error: {e}")
