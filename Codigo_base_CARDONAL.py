@@ -151,7 +151,7 @@ try:
         with col_ch2:
             fig_bar = px.bar(df_rampas, x='Hora', y='Rampa_MW_min', color='Central', barmode='group', color_discrete_map=COLORES_CENTRALES)
             fig_bar.add_hline(y=0, line_color="black")
-            fig_bar.update_layout(yaxis_title="Tasa Cambio (MW/min)", title="Volatilidad Solar (Rampas)")
+            fig_bar.update_layout(yaxis_title="Tasa Cambio (MW/min)", title="Volatilidad Eólica (Rampas)")
             st.plotly_chart(fig_bar, use_container_width=True, config=CONFIG_PLOTLY)
 
     # ---------------------------------------------------------
