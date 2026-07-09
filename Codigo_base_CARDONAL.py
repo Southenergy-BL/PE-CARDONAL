@@ -85,7 +85,7 @@ def calcular_rampas(df_agrupado):
 # ==========================================
 # 3. INTERFAZ Y PESTAÑAS
 # ==========================================
-st.title("🌬️ Monitoreo de Activos: Central Guarana")
+st.title("Monitoreo de Activos: Central Cardonal")
 
 # Rutas relativas apuntando a la carpeta "datos" en el repositorio de GitHub
 RUTA_GEN = os.path.join("datos", "Generación 2025-Jun 2026.xlsx")
