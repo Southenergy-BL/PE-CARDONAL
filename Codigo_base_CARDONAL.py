@@ -9,7 +9,7 @@ import os
 # ==========================================
 # 1. CONFIGURACIÓN Y CONSTANTES
 # ==========================================
-st.set_page_config(page_title="Monitoreo de Portafolio de Activos", layout="wide")
+st.set_page_config(page_title="Monitoreo de Portafolio de Activos: PE STATKRAFT", layout="wide")
 
 # Agrega aquí todas las centrales de tu portafolio
 COLORES_CENTRALES = {
