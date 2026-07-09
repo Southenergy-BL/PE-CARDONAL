@@ -145,7 +145,7 @@ try:
                 fig_area = px.area(df_sem, x="Fecha_Hora", y="Generacion_MW", color="Central", color_discrete_map=COLORES_CENTRALES)
                 fig_area.update_layout(xaxis=dict(range=[ini_sem, fin_sem + pd.Timedelta(hours=23, minutes=59)]))
             
-            fig_area.update_layout(hovermode="x unified", yaxis_title="Generación (MWh)", title="Curva de Inyección por Parque")
+            fig_area.update_layout(hovermode="x unified", yaxis_title="Generación (MWh)", title="Curva de Inyección del Parque")
             st.plotly_chart(fig_area, use_container_width=True, config=CONFIG_PLOTLY)
 
         with col_ch2:
@@ -189,7 +189,7 @@ try:
             col_e1, col_e2 = st.columns(2)
             with col_e1:
                 df_ingresos = df_completo.groupby('Central')['Ingreso_Est_USD'].sum().reset_index()
-                fig_ingresos = px.bar(df_ingresos, x='Central', y='Ingreso_Est_USD', color='Central', color_discrete_map=COLORES_CENTRALES, text_auto='.2s', title="Distribución de Ingresos por Parque")
+                fig_ingresos = px.bar(df_ingresos, x='Central', y='Ingreso_Est_USD', color='Central', color_discrete_map=COLORES_CENTRALES, text_auto='.2s', title="Distribución de Ingresos del Parque")
                 st.plotly_chart(fig_ingresos, use_container_width=True, config=CONFIG_PLOTLY)
 
             with col_e2:
